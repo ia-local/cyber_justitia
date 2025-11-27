@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber-Justitia | Plateforme d'Investigation Numérique</title>
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="l-sidebar">
+        <div class="c-brand">
+            <i class="fa-solid fa-scale-balanced"></i>
+            <span>Cyber-Justitia</span>
+        </div>
+
+        <nav class="c-nav">
+            <div class="c-nav__category">Général</div>
+            <button class="c-nav__item c-nav__item--active" onclick="app.navigate('dashboard')">
+                <i class="fa-solid fa-chart-pie"></i> Tableau de Bord
+            </button>
+            <button class="c-nav__item" onclick="app.navigate('greffe')">
+                <i class="fa-solid fa-gavel"></i> Le Greffe (Procédure)
+            </button>
+            
+            <div class="c-nav__category">Investigation</div>
+            <button class="c-nav__item" onclick="app.navigate('osint')">
+                <i class="fa-solid fa-microscope"></i> Labo OSINT
+            </button>
+            <button class="c-nav__item" disabled>
+                <i class="fa-solid fa-file-contract"></i> Rapporteur (Art. 41)
+            </button>
+
+            <div class="c-nav__category">Savoir</div>
+            <button class="c-nav__item" disabled>
+                <i class="fa-solid fa-graduation-cap"></i> Académie
+            </button>
+        </nav>
+
+        <div class="c-user-profile">
+            <div class="c-avatar">JD</div>
+            <div class="c-user-info">
+                <span class="name">Inspecteur Doe</span>
+                <span class="role">Officier Judiciaire</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="l-main">
+        <header class="l-header">
+            <h2 id="page-title" style="font-size: 1.2rem; color: var(--bg-dark);">Vue d'ensemble</h2>
+            <div class="c-status-badge">
+                <i class="fa-solid fa-shield-halved"></i> Système Sécurisé
+            </div>
+        </header>
+
+        <div class="c-view-container">
+            
+            <!-- VUE 1 : DASHBOARD -->
+            <section id="view-dashboard" class="c-view c-view--active">
+                <div class="c-hero">
+                    <h1>Bienvenue sur Cyber-Justitia</h1>
+                    <p>Plateforme d'aide à la décision judiciaire et d'investigation numérique (OSINT).</p>
+                </div>
+
+                <div class="l-grid-3">
+                    <div class="c-card">
+                        <div class="c-card__icon"><i class="fa-solid fa-book-journal-whills"></i></div>
+                        <h3>Code Pénal Intégré</h3>
+                        <p>Qualification automatique des infractions (313-1, 323-1) pour orienter l'enquête.</p>
+                    </div>
+                    <div class="c-card">
+                        <div class="c-card__icon"><i class="fa-solid fa-magnifying-glass-location"></i></div>
+                        <h3>Labo OSINT</h3>
+                        <p>Outils de recherche technique (Whois, IP, Leak Check) avec journalisation.</p>
+                    </div>
+                    <div class="c-card">
+                        <div class="c-card__icon"><i class="fa-solid fa-file-signature"></i></div>
+                        <h3>Procédure Art. 41</h3>
+                        <p>Standardisation des rapports pour faciliter le travail du Parquet.</p>
+                    </div>
+                </div>
+
+                <div class="c-alert-box">
+                    <i class="fa-solid fa-triangle-exclamation" style="margin-top: 3px;"></i>
+                    <div>
+                        <strong>Rappel Déontologique & Légal</strong>
+                        <br>L'usage de cet outil est soumis au strict respect du secret de l'enquête. Toute recherche OSINT active est simulée localement dans cette version de formation.
+                    </div>
+                </div>
+            </section>
+
+            <!-- VUE 2 : GREFFE (QUALIFICATION) -->
+            <section id="view-greffe" class="c-view">
+                <div class="c-panel">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                        <h3><i class="fa-solid fa-filter" style="color:var(--primary);"></i> Assistant de Qualification</h3>
+                        <span style="font-size:0.8rem; color:var(--text-muted);">Moteur v1.4 (CP 2024)</span>
+                    </div>
+                    
+                    <div class="l-split-screen">
+                        <!-- Formulaire -->
+                        <div class="c-form-container">
+                            <form id="qualification-form">
+                                <div class="c-form-group">
+                                    <label>Nature de l'incident déclaré</label>
+                                    <select id="incident-type" class="c-input">
+                                        <option value="">-- Sélectionner --</option>
+                                        <option value="finance">Perte financière / E-commerce</option>
+                                        <option value="intrusion">Piratage de compte / Système</option>
+                                        <option value="identity">Usurpation d'identité / Harcèlement</option>
+                                    </select>
+                                </div>
+
+                                <div id="dynamic-questions" class="c-dynamic-area">
+                                    <div style="color:#94a3b8; text-align:center; margin-top:40px;">Sélectionnez une nature d'incident...</div>
+                                </div>
+
+                                <button type="submit" class="c-btn c-btn--primary" id="btn-qualify" style="display:none;">
+                                    <i class="fa-solid fa-gear"></i> Analyser les faits
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Résultat -->
+                        <div class="c-result-container" id="legal-result">
+                            <div class="c-empty-state">
+                                <i class="fa-solid fa-scale-unbalanced"></i>
+                                <p>En attente de données...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VUE 3 : LABO OSINT -->
+            <section id="view-osint" class="c-view">
+                <div class="c-panel">
+                    <h3><i class="fa-solid fa-network-wired" style="color:var(--primary);"></i> Investigation Numérique (OSINT)</h3>
+                    <p class="u-text-muted" style="margin-bottom:20px;">Console de recherche technique asynchrone.</p>
+
+                    <div class="c-osint-controls">
+                        <select id="osint-tool" class="c-input" style="flex:1; max-width:200px;">
+                            <option value="whois">WHOIS (Domaine)</option>
+                            <option value="ip_geo">IP Geolocation</option>
+                            <option value="email_breach">Email Leak Check</option>
+                        </select>
+                        <input type="text" id="osint-target" class="c-input" style="flex:2;" placeholder="Cible (ex: site-suspect.com, 8.8.8.8)...">
+                        <button class="c-btn c-btn--primary" id="btn-scan" style="flex:0 0 auto;">
+                            <i class="fa-solid fa-radar"></i> Lancer Scan
+                        </button>
+                    </div>
+
+                    <div class="c-terminal">
+                        <div class="c-terminal__header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="title">investigator@cyber-justitia:~/osint_lab</span>
+                        </div>
+                        <div class="c-terminal__body" id="osint-output">
+                            <div class="line">System initialized.</div>
+                            <div class="line">Connected to local secure node.</div>
+                            <div class="line">Waiting for input...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- LOGIQUE JAVASCRIPT (INTEGRÉE) -->
+    <script src="script.js"></script>
+</body>
+</html>

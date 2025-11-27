@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Prevention Hub - Dashboard</title>
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+
+    <div class="l-dashboard">
+        
+        <header class="l-dashboard__header">
+            <div class="c-brand">🛡️ CyberAware Ops</div>
+            <nav class="c-nav">
+                <span class="c-user-badge">Admin</span>
+            </nav>
+        </header>
+
+        <aside class="l-dashboard__sidebar">
+            <nav class="c-role-menu">
+                <h3 class="c-section-title">Équipe</h3>
+                <button class="c-role-btn c-role-btn--active" data-role="manager">
+                    🤖 Assistant Manager
+                </button>
+                <button class="c-role-btn" data-role="awareness">
+                    🧠 Awareness Manager
+                </button>
+                <button class="c-role-btn" data-role="grc">
+                    📋 Consultant GRC
+                </button>
+                <button class="c-role-btn" data-role="prevention">
+                    🤝 Prévention Public
+                </button>
+                <button class="c-role-btn" data-role="trust">
+                    🔍 Trust & Safety
+                </button>
+            </nav>
+        </aside>
+
+        <main class="l-dashboard__main">
+            <div class="c-chat-container">
+                <div class="c-chat-header">
+                    <h2 id="current-role-title">Assistant Manager</h2>
+                    <span class="c-status-dot">En ligne</span>
+                </div>
+                
+                <div class="c-chat-feed" id="chat-feed">
+                    <div class="c-message c-message--bot">
+                        Bonjour. Je suis votre Assistant Manager. Quel expert en prévention souhaitez-vous solliciter aujourd'hui ?
+                    </div>
+                </div>
+
+                <div class="c-chat-input-area">
+                    <form id="chat-form">
+                        <input type="text" id="user-input" placeholder="Posez votre question sur les arnaques..." required autocomplete="off">
+                        <button type="submit" class="c-btn-send">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <aside class="l-dashboard__infos">
+            <div class="c-info-card">
+                <h3>Contexte Actuel</h3>
+                <p id="role-description">Coordination générale et triage des demandes.</p>
+            </div>
+            <div class="c-info-card">
+                <h3>Outils Rapides</h3>
+                <ul class="c-list-tools">
+                    <li>📄 Générer Fiche Poste</li>
+                    <li>📧 Simulation Phishing</li>
+                    <li>📊 Rapport Audit</li>
+                </ul>
+            </div>
+        </aside>
+
+        <footer class="l-dashboard__footer">
+            <p>System v1.0 | Powered by Groq SDK</p>
+        </footer>
+
+    </div>
+
+    <script src="ch
+    atbot.js"></script>
+</body>
+</html>
