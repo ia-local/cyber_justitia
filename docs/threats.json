@@ -1,0 +1,54 @@
+[
+  {
+    "id": "SCAM_001_TELEGRAM_SUPPORT",
+    "title": "Arnaque Faux Support Technique Telegram",
+    "category": "Social Engineering",
+    "platform": "Telegram, Email",
+    "art_penal_potentielles": ["313-1 CP (Escroquerie)"],
+    "description_courte": "L'utilisateur reçoit un message urgent signalant une tentative de connexion ou un problème de droit d'auteur, incitant à cliquer sur un lien de 'vérification' pour voler les identifiants.",
+    "mecanisme_cle": "Création d'urgence (Faux verrouillage de compte ou notification DMCA) menant à un site de phishing reproduisant la page de connexion de Telegram.",
+    "facteur_humain": "Peur de perdre l'accès ou l'identité, sentiment de culpabilité (DMCA).",
+    "indicators_tech": ["URL tronquée ou contenant des homographes (ex: 'telegraam.org')", "Demande le code OTP ou le mot de passe actuel"],
+    "osint_focus": ["Domain WHOIS du site de phishing", "IP Geolocation du serveur de réception des données"],
+    "conseils_prevention": ["Ne jamais donner le code OTP. Activer la double authentification. Vérifier le badge 'Vérifié'."]
+  },
+  {
+    "id": "SCAM_002_SENTIMENTS",
+    "title": "Arnaque aux Sentiments (Romance Scam)",
+    "category": "Abus de Confiance / Fraude Affective",
+    "platform": "Sites de rencontre, Facebook, Instagram",
+    "art_penal_potentielles": ["313-1 CP (Escroquerie)", "226-4-1 CP (Usurpation d'identité, si faux profil)"],
+    "description_courte": "Création d'un lien émotionnel fort et rapide, suivi d'une demande d'aide financière urgente (souvent pour un voyage, des frais médicaux ou des problèmes de douane) pour 'rejoindre' la victime.",
+    "mecanisme_cle": "Ingénierie sociale longue (grooming) utilisant des photos volées (catfishing) pour créer une urgence émotionnelle et financière.",
+    "facteur_humain": "Solitude, désir d'affection, biais de confirmation (la victime 'veut' que l'histoire soit vraie).",
+    "indicators_tech": ["Photos de stock ou de mannequins (vérification par Reverse Image Search)", "Refus constant de faire des appels vidéo", "Compte souvent récent ou peu d'activité en dehors des photos volées."],
+    "osint_focus": ["Reverse Image Search (Trouver la source des photos)", "Analyse des IBAN (si virement bancaire)", "Analyse du phrasé/langage utilisé (souvent traduit grossièrement)."],
+    "conseils_prevention": ["Ne jamais envoyer d'argent à une personne jamais rencontrée physiquement. Exiger des preuves d'identité fiables."]
+  },
+  {
+    "id": "SCAM_003_FAUX_CONSEILLER",
+    "title": "Arnaque Faux Conseiller Bancaire (Vishing/Smishing)",
+    "category": "Usurpation de Qualité / Fraude au Virement",
+    "platform": "Téléphone (Vishing), SMS (Smishing)",
+    "art_penal_potentielles": ["313-1 CP (Escroquerie)", "226-4-1 CP (Usurpation d'identité)"],
+    "description_courte": "L'escroc se fait passer pour un conseiller bancaire ou un service de fraude et alerte d'une transaction suspecte, poussant la victime à 'annuler' la transaction en la validant elle-même (sur son application bancaire ou par un faux lien).",
+    "mecanisme_cle": "Utilisation d'un numéro usurpé (spoofing) pour afficher le nom de la banque. Pression psychologique pour obtenir une validation ou un mot de passe à usage unique (OTP).",
+    "facteur_humain": "Confiance dans l'autorité (la Banque), panique face à une perte financière imminente.",
+    "indicators_tech": ["Le vrai conseiller bancaire ne demandera JAMAIS de valider une transaction à des fins d'annulation.", "Erreurs dans le SMS ou ton de voix non professionnel (si Vishing)."],
+    "osint_focus": ["Analyse des numéros de téléphone (si possible)", "Traces laissées sur le relevé bancaire de la victime (IBAN)."],
+    "conseils_prevention": ["Raccrocher et rappeler la banque soi-même au numéro officiel. Ne jamais donner d'OTP par téléphone."]
+  },
+  {
+    "id": "SCAM_004_ECOMMERCE_PHISHING",
+    "title": "Arnaque Faux Site E-commerce (Phishing)",
+    "category": "Fraude à la Livraison / Phishing",
+    "platform": "Web, Email, SMS",
+    "art_penal_potentielles": ["313-1 CP (Escroquerie)", "323-1 CP (Accès frauduleux STAD)"],
+    "description_courte": "Création d'un faux site de marque (souvent luxe ou technologie) à prix cassé. L'utilisateur paie, mais ne reçoit jamais le produit. Ou bien, l'utilisateur reçoit un SMS/Email de 'fausse livraison' demandant de payer 1€ pour la relivraison, volant les coordonnées bancaires.",
+    "mecanisme_cle": "Hameçonnage (Phishing) visant à collecter des coordonnées bancaires ou une remise de fonds pour un bien inexistant.",
+    "facteur_humain": "Appât du gain (trop beau pour être vrai), désir d'acquérir un produit rare/cher.",
+    "indicators_tech": ["Domaine créé très récemment (< 3 mois)", "Absence de mentions légales ou de CGV crédibles", "Seul mode de paiement accepté : virement ou crypto (pas de PayPal/CB sécurisée)."],
+    "osint_focus": ["WHOIS du domaine (vérifier l'âge et la juridiction)", "Analyse des avis en ligne (souvent faux ou inexistants)."],
+    "conseils_prevention": ["Vérifier l'URL (le 's' de HTTPS ne suffit pas). Utiliser une e-carte bleue. Rechercher des avis indépendants."]
+  }
+]

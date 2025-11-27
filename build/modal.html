@@ -6,9 +6,7 @@
     <title>Cyber-Justitia | Plateforme d'Investigation Numérique</title>
     <!-- FontAwesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="src/css/style.css">
-    <link rel="stylesheet" href="src/css/card.css">
     <link rel="stylesheet" href="src/css/modalSystem.css">
 </head>
 <body>
@@ -19,28 +17,28 @@
             <i class="fa-solid fa-scale-balanced"></i>
             <span>Cyber-Justitia</span>
         </div>
+
         <nav class="c-nav">
-           <div class="c-nav__category">Général</div>
-           <button class="c-nav__item c-nav__item--active" onclick="app.navigate('dashboard')">
-               <i class="fa-solid fa-chart-pie"></i> Tableau de Bord
-           </button>
-           <button class="c-nav__item" onclick="app.navigate('greffe')">
-               <i class="fa-solid fa-gavel"></i> Le Greffe (Procédure)
-           </button>
-           <div class="c-nav__category">Investigation</div>
-           <button class="c-nav__item" onclick="app.navigate('osint')">
-               <i class="fa-solid fa-microscope"></i> Labo OSINT
-           </button>
-           <button class="c-nav__item" onclick="app.navigate('mapping')">
-                <i class="fa-solid fa-map-location-dot"></i> Cartographie Flux
+            <div class="c-nav__category">Général</div>
+            <button class="c-nav__item c-nav__item--active" onclick="app.navigate('dashboard')">
+                <i class="fa-solid fa-chart-pie"></i> Tableau de Bord
             </button>
-           <button class="c-nav__item" disabled>
-               <i class="fa-solid fa-file-contract"></i> Rapporteur (Art. 41)
-           </button>
-           <div class="c-nav__category">Savoir</div>
-           <button class="c-nav__item" onclick="app.navigate('academie')">
-               <i class="fa-solid fa-graduation-cap"></i> Académie (Menaces)
-           </button>
+            <button class="c-nav__item" onclick="app.navigate('greffe')">
+                <i class="fa-solid fa-gavel"></i> Le Greffe (Procédure)
+            </button>
+            
+            <div class="c-nav__category">Investigation</div>
+            <button class="c-nav__item" onclick="app.navigate('osint')">
+                <i class="fa-solid fa-microscope"></i> Labo OSINT
+            </button>
+            <button class="c-nav__item" disabled>
+                <i class="fa-solid fa-file-contract"></i> Rapporteur (Art. 41)
+            </button>
+
+            <div class="c-nav__category">Savoir</div>
+            <button class="c-nav__item" disabled>
+                <i class="fa-solid fa-graduation-cap"></i> Académie
+            </button>
         </nav>
 
         <div class="c-user-profile">
@@ -56,10 +54,15 @@
     <main class="l-main">
         <header class="l-header">
             <div style="display:flex; gap:10px; align-items:center;">
+                <button class="c-btn c-btn--primary" onclick="ModalSystem.open('modal-ai')">
+                    <i class="fa-solid fa-robot"></i> Assistant IA
+                </button>
         <div class="c-status-badge"><i class="fa-solid fa-shield-halved"></i> Système Sécurisé</div>
     </div>
-        </header> 
-        <div class="c-view-container">  
+        </header>
+        
+        <div class="c-view-container">
+            
             <!-- VUE 1 : DASHBOARD -->
             <section id="view-dashboard" class="c-view c-view--active">
                 <div class="c-hero">
@@ -138,7 +141,6 @@
             </section>
 
             <!-- VUE 3 : LABO OSINT -->
-
             <section id="view-osint" class="c-view">
                 <div class="c-panel">
                     <h3><i class="fa-solid fa-network-wired" style="color:var(--primary);"></i> Investigation Numérique (OSINT)</h3>
@@ -153,9 +155,6 @@
                         <input type="text" id="osint-target" class="c-input" style="flex:2;" placeholder="Cible (ex: site-suspect.com, 8.8.8.8)...">
                         <button class="c-btn c-btn--primary" id="btn-scan" style="flex:0 0 auto;">
                             <i class="fa-solid fa-radar"></i> Lancer Scan
-                        </button>
-                        <button class="c-btn c-btn--primary" id="btn-trace-map" style="background-color: #f59e0b; flex:0 0 auto;">
-                        <i class="fa-solid fa-route"></i> Tracer le Flux
                         </button>
                     </div>
 
@@ -174,97 +173,50 @@
                     </div>
                 </div>
             </section>
-             <section id="view-mapping" class="c-view">
-                <div class="c-panel" style="padding: 0; display: flex; flex-direction: column; height: 100%; min-height: 600px;">
-                    <div class="c-map-controls">
-                         <h3>Analyse des Traces Géographiques</h3>
-                         <div style="font-size: 0.9rem; color: var(--text-muted);">
-                            <span id="trace-info-summary">En attente d'un scan OSINT pour tracer les rebonds.</span>
-                         </div>
-                    </div>
-                    <div id="leaflet-map-container" class="c-map-container">
-                    </div>  
-                </div>
-            </section>
-            <!-- VUE 4 : ACADEMIA -->
-            <section id="view-academie" class="c-view">
-                <div class="c-hero">
-                    <h1>Académie Cyber-Justitia</h1>
-                    <p>Formations à la prévention, à la vie privée et documentation des méthodes d'enquête (OSINT).</p>
-                </div>
-
-                <div id="academie-grid" class="l-grid-academie">
-                    <div style="color:var(--text-muted);">Chargement des modules de formation...</div>
-                </div>
-            </section>
         </div>
     </main>
-    <div class="c-modal-overlay" id="academia-modal">
-        <div class="c-modal-box" style="height: 80vh; max-width: 700px;">
+<div class="c-modal-overlay" id="modal-ai">
+        <div class="c-modal-box">
+            
             <div class="c-modal-header">
-                <div class="c-modal-title" id="academia-modal-title"></div>
-                <button class="c-modal-close" onclick="ModalSystem.close('academia-modal')">
+                <div class="c-modal-title">
+                    <i class="fa-solid fa-brain" style="color:var(--accent-gold);"></i>
+                    <span>Neural Assistant v1.0</span>
+                </div>
+                <button class="c-modal-close" onclick="ModalSystem.close('modal-ai')">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <div class="c-modal-body" id="academia-modal-body">
+
+            <div class="c-modal-body" id="chat-messages">
+                <div class="c-chat-bubble c-chat-bubble--ai">
+                    <div class="c-chat-role">Système</div>
+                    Bonjour Inspecteur. Sélectionnez un expert et posez votre question.
                 </div>
-        </div>
-    </div>
-    <div class="c-dock-trigger" onclick="toggleRightPanel()">
-        <span class="c-notification-dot"></span>
-        <i class="fa-solid fa-comment-dots"></i>
-        <span>Assistant</span>
-    </div>
-    <aside class="l-aside-right" id="right-panel">
-        
-        <div class="c-panel-header">
-            <h3><i class="fa-solid fa-robot"></i> Neural Assistant</h3>
-            <button class="c-close-panel" onclick="toggleRightPanel()">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
-        </div>
-
-        <div class="c-quick-actions">
-            <button class="c-action-btn" title="Nouveau Chat" onclick="Chatbot.clearChat()">
-                <i class="fa-solid fa-eraser"></i>
-            </button>
-            <button class="c-action-btn" title="Exporter le rapport" disabled>
-                <i class="fa-solid fa-file-export"></i>
-            </button>
-            <select id="chat-role" class="c-mini-select">
-                <option value="manager">Manager</option>
-                <option value="trust">Trust & Safety</option>
-                <option value="osint">OSINT</option>
-                <option value="legal">Juridique</option>
-            </select>
-        </div>
-
-        <div class="c-chat-container" id="chat-messages">
-            <div class="c-chat-bubble c-chat-bubble--ai">
-                <div class="c-chat-role">Système</div>
-                Prêt pour l'investigation. Sélectionnez un profil ci-dessus.
             </div>
-        </div>
 
-        <div class="c-chat-input-area">
-            <input type="text" id="chat-input" placeholder="Poser une question..." autocomplete="off">
-            <button id="chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
-        </div>
+            <div class="c-modal-footer">
+                <div class="c-chat-input-group">
+                    <select id="chat-role" class="c-input" style="width: 140px; font-size:0.85rem;">
+                        <option value="manager">Manager</option>
+                        <option value="trust">Trust & Safety</option>
+                        <option value="osint">Expert OSINT</option>
+                        <option value="legal">Juriste (313-1)</option>
+                    </select>
 
-    </aside>
+                    <input type="text" id="chat-input" class="c-input" placeholder="Décrivez la situation ou collez un lien..." autocomplete="off">
+                    
+                    <button id="chat-send-btn" class="c-btn c-btn--primary" style="padding: 0 15px;">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <!-- LOGIQUE JAVASCRIPT (INTEGRÉE) -->
     <script src="src/js/script.js"></script>
     <script src="src/js/chatbot.js"></script>
     <script src="src/js/modalSystem.js"></script>
-    <script src="src/js/card.js"></script>
-    <script>
-        // Petit script inline pour gérer l'ouverture/fermeture UI
-        function toggleRightPanel() {
-            const panel = document.getElementById('right-panel');
-            panel.classList.toggle('is-open');
-        }
-    </script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </body>
 </html>

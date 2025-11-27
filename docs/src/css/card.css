@@ -1,0 +1,75 @@
+/* card.css */
+
+.l-grid-academie {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding-top: 20px;
+}
+
+.c-card-module {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.c-card-module:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.c-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.c-card-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    /* Style dynamique basé sur le type */
+}
+
+.c-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bg-dark);
+    margin: 0;
+}
+
+.c-card-category {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.c-card-summary {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.4;
+    flex-grow: 1;
+    margin-top: 10px;
+}
+
+/* Styles spécifiques au type (pour les icônes) */
+.type-MODULE {
+    background-color: #dbeafe; /* Bleu très clair */
+    color: var(--primary-dark);
+}
+
+.type-METHOD {
+    background-color: #fef3c7; /* Jaune clair */
+    color: var(--accent-gold);
+}

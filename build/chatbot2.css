@@ -1,0 +1,38 @@
+/* AJOUTS POUR LE CHAT (à mettre dans modalSystem.css) */
+
+.c-chat-bubble {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    animation: fadeIn 0.3s;
+}
+
+.c-chat-bubble--user {
+    align-self: flex-end;
+    background-color: var(--primary); /* Bleu défini dans style.css */
+    color: white;
+    border-bottom-right-radius: 2px;
+}
+
+.c-chat-bubble--ai {
+    align-self: flex-start;
+    background-color: #f1f5f9;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    border-bottom-left-radius: 2px;
+}
+
+.c-chat-role {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent-gold); /* Or défini dans style.css */
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.c-chat-input-group {
+    display: flex;
+    gap: 10px;
+}

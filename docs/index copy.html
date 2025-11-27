@@ -188,29 +188,27 @@
             </section>
             <!-- VUE 4 : ACADEMIA -->
             <section id="view-academie" class="c-view">
-                <div class="c-hero">
-                    <h1>Académie Cyber-Justitia</h1>
-                    <p>Formations à la prévention, à la vie privée et documentation des méthodes d'enquête (OSINT).</p>
-                </div>
+                <div class="c-panel" style="display: flex; gap: 30px; height: 100%; min-height: 600px;">
+                    
+                    <aside class="c-academie-menu">
+                        <h3>Fiches de Menaces</h3>
+                        <ul id="threat-list" class="c-threat-list">
+                            <li style="color:var(--text-muted);">Chargement des menaces...</li>
+                        </ul>
+                    </aside>
 
-                <div id="academie-grid" class="l-grid-academie">
-                    <div style="color:var(--text-muted);">Chargement des modules de formation...</div>
+                    <div class="c-academie-detail" id="threat-detail-container">
+                        <div class="c-empty-state" style="padding-top: 200px;">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                            <p>Sélectionnez une menace dans le menu pour afficher les détails, mécanismes et conseils de prévention.</p>
+                        </div>
+                    </div>
+                    
                 </div>
             </section>
         </div>
     </main>
-    <div class="c-modal-overlay" id="academia-modal">
-        <div class="c-modal-box" style="height: 80vh; max-width: 700px;">
-            <div class="c-modal-header">
-                <div class="c-modal-title" id="academia-modal-title"></div>
-                <button class="c-modal-close" onclick="ModalSystem.close('academia-modal')">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="c-modal-body" id="academia-modal-body">
-                </div>
-        </div>
-    </div>
+
     <div class="c-dock-trigger" onclick="toggleRightPanel()">
         <span class="c-notification-dot"></span>
         <i class="fa-solid fa-comment-dots"></i>

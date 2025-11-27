@@ -1,0 +1,63 @@
+[
+  {
+    "id": "CYBER_101",
+    "type": "MODULE",
+    "title": "Bases de la Cyber-Prévention",
+    "category": "Hygiène Numérique",
+    "summary": "Comprendre les menaces courantes, les bases du phishing et les réflexes de sécurité fondamentaux.",
+    "icon": "fa-shield-halved",
+    "content": [
+      {"sectionTitle": "Le Phishing & Ses Vecteurs", "text": "Techniques d'hameçonnage, signaux d'alerte, spoofing."},
+      {"sectionTitle": "Mots de Passe et 2FA", "text": "Comment créer un mot de passe robuste, l'intérêt de la double authentification."},
+      {"sectionTitle": "Mises à Jour Logicielles", "text": "L'importance des patchs de sécurité et la gestion des vulnérabilités."}
+    ],
+    "relatedMethods": ["OSINT_PASS_102"]
+  },
+  {
+    "id": "PRIVACY_ACT",
+    "type": "MODULE",
+    "title": "Protection des Données et Anonymat (RGPD)",
+    "category": "Vie Privée/Législation",
+    "summary": "Introduction aux droits de l'utilisateur (RGPD) et aux techniques pour minimiser son empreinte numérique et naviguer anonymement.",
+    "icon": "fa-user-secret",
+    "content": [
+      {"sectionTitle": "Loi et Droits de l'Utilisateur", "text": "Les principes clés du RGPD (Droit à l'oubli, droit d'accès...)."},
+      {"sectionTitle": "Techniques d'Anonymat", "text": "L'utilisation de VPN, du réseau Tor, et la séparation des identités en ligne."},
+      {"sectionTitle": "Nettoyage de l'Empreinte", "text": "Outils et méthodes pour supprimer ou déréférencer ses données."}
+    ],
+    "relatedMethods": ["OSINT_GEO_100", "OSINT_PASS_102"]
+  },
+  {
+    "id": "OSINT_GEO_100",
+    "type": "METHOD",
+    "title": "GeoIP & Localisation Inversée",
+    "category": "OSINT Technique",
+    "summary": "Techniques pour identifier l'emplacement physique d'une adresse IP, d'un domaine ou d'une photo à l'aide de données publiques.",
+    "icon": "fa-location-dot",
+    "steps": [
+        "Extraction de l'adresse IP source.", 
+        "Utilisation de bases de données GeoIP publiques (Ex: MaxMind, IPinfo).", 
+        "Corrélation des coordonnées avec des outils de cartographie (Google Maps, Yandex Maps).", 
+        "Analyse des métadonnées (EXIF) des photos si disponibles."
+    ],
+    "riskAssessment": "Faible (Collecte passive de données publiques)",
+    "toolExamples": ["ip-api.com", "yandex.com/maps"]
+  },
+
+  {
+    "id": "OSINT_PASS_102",
+    "type": "METHOD",
+    "title": "Recherche de Fuites de Mots de Passe (Breach Check)",
+    "category": "OSINT Sécurité",
+    "summary": "Vérifier si un email ou un nom d'utilisateur a été compromis lors de fuites de données antérieures (Data Breaches).",
+    "icon": "fa-lock-open",
+    "steps": [
+        "Récupération de l'identifiant (email ou nom d'utilisateur).", 
+        "Utilisation de services de vérification de fuites (Ex: Have I Been Pwned?).", 
+        "Identification des sources des fuites et des données compromises (mot de passe, hachage, etc.).", 
+        "Recommandation immédiate de changement de mot de passe."
+    ],
+    "riskAssessment": "Très faible (Outil de sécurité préventif)",
+    "toolExamples": ["haveibeenpwned.com", "dehashed.com"]
+  }
+]
